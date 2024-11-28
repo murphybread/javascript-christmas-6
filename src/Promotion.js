@@ -104,6 +104,17 @@ class Promotion{
         return totalPriceBeforePromotion;
     }
 
+    calculatePricePromotion(){
+        let promtionPrice = 0
+        const promotionList = this.calculatePromotions();
+        promotionList.forEach((promotion) => {
+            promtionPrice += promotion[1];
+        });
+
+        return promtionPrice;
+
+    }
+
     giveawayPromotion (){
         const totalPriceBeforePromotion = this.calculatePriceBeforePromotion();
 

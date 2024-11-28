@@ -19,6 +19,7 @@ class App {
     const promotionList = promotion.calculatePromotions();
     OutputView.printPromptionList(promotionList);
 
+    OutputView.printPromotionPrice(promotion.calculatePricePromotion());
 
 
   }

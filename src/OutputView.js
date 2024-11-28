@@ -40,6 +40,11 @@ const OutputView = {
         }
     },
 
+    printPromotionPrice(promotionPrice){
+        Console.print("\n<총혜택 내역>");
+        Console.print(`-${promotionPrice}원`);
+
+    },
 }
 
 export default OutputView;
