@@ -8,8 +8,12 @@ const OutputView = {
             let menuCount = menu.split("-")[1];
             Console.print(`${menuName} ${menuCount}개`);
         });
+    },
+    
+    printPriceBeforePromotion(totalPriceBeforePromotion) {
+        Console.print("\n<할인 전 총주문 금액>");
+        Console.print(totalPriceBeforePromotion + "원");
     }
-    // ...
 }
 
 export default OutputView;

@@ -25,6 +25,9 @@ const Menus = {
 const MENU_ERROR_MESSAGE = "[ERROR] 유효하지 않은 메뉴입니다. 다시 입력해 주세요.";
 
 
+
+
+
 class Validator {
     constructor(menu){
         this.menuName = menu.split("-")[0];
@@ -95,8 +98,6 @@ const InputView = {
                     if (!validator.validateReqeustFormat() ||!validator.validateExstingMenu() || !validator.validateCountMenu()  ){
                         throw new Error(MENU_ERROR_MESSAGE);
                     }
-
-                    console.log(`menu Accepted`);
 
                 })
                 Console.print("주문 메뉴가 정상적으로 입력되었습니다.\n 12월 26일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
