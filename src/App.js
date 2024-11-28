@@ -16,6 +16,9 @@ class App {
     const giveawayPromotion = promotion.giveawayPromotion();
     OutputView.printGiveawayPromotion(giveawayPromotion);
 
+    const promotionList = promotion.calculatePromotions();
+    OutputView.printPromptionList(promotionList);
+
 
 
   }

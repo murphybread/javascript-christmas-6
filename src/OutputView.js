@@ -23,6 +23,17 @@ const OutputView = {
         else{
             Console.print("없음");
         }
+    },
+
+    printPromptionList(promotionList){
+        Console.print("\n<혜택 내역>");
+        promotionList.forEach((promotion) => {
+            console.log(promotion)
+            if(promotion[1]){
+                Console.print(`${promotion[0]} -${promotion[1]}원`);
+            }
+
+        });
     }
 }
 

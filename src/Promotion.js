@@ -24,18 +24,21 @@ const Menus = {
 class Promotion{
     constructor (menusArray, day){
         this.menusArray = menusArray;
-        this.day = day;
-        this.menuType = "";
+        this.day = Number(day);
 
     }
-    daysPromotion (){
-        if ((this.day%7 === 1 || this.day%7 === 2 ) && this.menuType === "main"){
-            return 2023;
-        }
-        else if (( this.day%7 !== 1 || this.day%7 !== 2 ) && this.menuType === "dessert"){
+    weekdayPromotion (menuType){
+        if ((this.day%7 !== 1 || this.day%7 !== 2 ) && menuType === "dessert"){
             return 2023;
         }
         return 0;
+    }
+
+    weekendPromotion (menuType){
+       if (( this.day%7 === 1 || this.day%7 === 2 ) && menuType === "main"){
+            return 2023;
+        }
+        return 0; 
     }
 
     specialPromotion (){
@@ -44,6 +47,41 @@ class Promotion{
         }
         return 0;
 
+    }
+
+    calculatePromotions(){
+        const promotionList = [
+           ["크리스마스 디데이 할인",0],
+           [ "평일 할인",0],
+           [ "주말 할인" ,0],
+           [ "특별 할인", 0],
+           ["증정 이벤트",0]
+        ];
+        let weekdayPromotionPrice = 0;
+        let weekendPromotionPrice = 0;
+
+        this.menusArray.forEach((menu) => {
+            let menuName = menu.split("-")[0];
+            let menuCount = menu.split("-")[1];
+
+            for (let storeMenu in Menus){
+                if ( Object.keys(Menus[storeMenu]).includes(menuName)){
+                    weekdayPromotionPrice += this.weekdayPromotion(storeMenu) * menuCount;
+                    weekendPromotionPrice += this.weekendPromotion(storeMenu) * menuCount;
+                }
+            }
+            console.log (`weekdayPromotionPrice: ${weekdayPromotionPrice}, weekendPromotionPrice: ${weekendPromotionPrice}`)
+        });
+
+
+        promotionList[1][1] += weekdayPromotionPrice;
+        promotionList[2][1] += weekendPromotionPrice;
+        promotionList[3][1] += this.specialPromotion()
+        promotionList[4][1] +=this.giveawayPromotion()
+
+        console.log(promotionList)
+
+        return promotionList;
     }
 
     calculatePriceBeforePromotion (){
@@ -65,9 +103,9 @@ class Promotion{
         const totalPriceBeforePromotion = this.calculatePriceBeforePromotion();
 
         if (totalPriceBeforePromotion >= 120000){
-            return ["샴페인-1"];
+            return 25000;
         }
-        return "";
+        return 0;
         
     }
 
