@@ -4,6 +4,8 @@ class App {
 
   async run() {
     const input = await InputView.readDate();
+    const menusArray = await InputView.readMenu();
+    
   }
 }
 
