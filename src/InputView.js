@@ -22,7 +22,7 @@ const Menus = {
         샴페인:25000
     }
 }
-const MENU_ERROR_MESSAGE = "[ERROR] 유효하지 않은 메뉴입니다. 다시 입력해 주세요.";
+const MENU_ERROR_MESSAGE = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
 
 
 
@@ -50,7 +50,7 @@ class Validator {
 
     validateReqeustFormat (){
 
-        return typeof this.menuName === "string" && !isNaN(Number(this.menuCount));
+        return (typeof this.menuName === "string" && !isNaN(this.menuCount));
     }
 
     validateDuplicateMenu(){
@@ -70,9 +70,7 @@ const InputView = {
         Console.print("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
         while (true) {
             try {
-                const input = await Console.readLineAsync(
-                    "12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)\n"
-                );
+                const input = await Console.readLineAsync("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)\n");
                 if (Number(input) < 1 || Number(input) > 31 || isNaN(Number(input))) {
                     throw new Error("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
                 }
