@@ -10,17 +10,15 @@ class App {
     OutputView.printMenu(menusArray);
     const promotion = new Promotion(menusArray, day);
 
-    const calculatePriceBeforePromotion = promotion.calculatePriceBeforePromotion();
-    OutputView.printPriceBeforePromotion(calculatePriceBeforePromotion);
-
-    const giveawayPromotion = promotion.giveawayPromotion();
-    OutputView.printGiveawayPromotion(giveawayPromotion);
-
+    OutputView.printPriceBeforePromotion(promotion.calculatePriceBeforePromotion());
+    
+    OutputView.printGiveawayPromotion(promotion.giveawayPromotion());
     const promotionList = promotion.calculatePromotions();
     OutputView.printPromptionList(promotionList);
 
     OutputView.printPromotionPrice(promotion.calculatePricePromotion());
 
+    OutputView.printAcutalPrice(promotion.calculatePriceBeforePromotion(), promotion.calculatePricePromotion(),promotion.giveawayPromotion());
 
   }
 }

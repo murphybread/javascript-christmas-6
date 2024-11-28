@@ -45,6 +45,11 @@ const OutputView = {
         Console.print(`-${promotionPrice}원`);
 
     },
+
+    printAcutalPrice(totalPriceBeforePromotion, promotionPrice,giveawayPromotion){
+        Console.print("\n<할인 후 예상 결제 금액>");
+        Console.print(`${totalPriceBeforePromotion-promotionPrice+giveawayPromotion}원`);
+    }
 }
 
 export default OutputView;
