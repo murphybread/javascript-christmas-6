@@ -21,7 +21,17 @@ const Menus = {
     }
 }
 
+const PROMOTION_LIST = [
+    ["크리스마스 디데이 할인",0],
+    [ "평일 할인",0],
+    [ "주말 할인" ,0],
+    [ "특별 할인", 0],
+    ["증정 이벤트",0]
+]
+
 class Promotion{
+    #promotionList;
+
     constructor (menusArray, day){
         this.menusArray = menusArray;
         this.day = Number(day);
@@ -56,23 +66,15 @@ class Promotion{
     }
 
     calculatePromotions(){
-        const promotionList = [
-           ["크리스마스 디데이 할인",0],
-           [ "평일 할인",0],
-           [ "주말 할인" ,0],
-           [ "특별 할인", 0],
-           ["증정 이벤트",0]
-        ];
+        this.#promotionList = PROMOTION_LIST
         if (this.calculatePriceBeforePromotion() <= 10000){
-            return promotionList;
+            return this.#promotionList;
         }
         let weekdayPromotionPrice = 0;
         let weekendPromotionPrice = 0;
 
         this.menusArray.forEach((menu) => {
-            let menuName = menu.split("-")[0];
-            let menuCount = menu.split("-")[1];
-
+            let [menuName, menuCount] = menu.split("-");
             for (let storeMenu in Menus){
                 if ( Object.keys(Menus[storeMenu]).includes(menuName)){
                     weekdayPromotionPrice += this.weekdayPromotion(storeMenu) * menuCount;
@@ -80,20 +82,24 @@ class Promotion{
                 }
             }
         });
-
-        promotionList[0][1] += this.christmasDdayPromtion();
-        promotionList[1][1] += weekdayPromotionPrice;
-        promotionList[2][1] += weekendPromotionPrice;
-        promotionList[3][1] += this.specialPromotion()
-        promotionList[4][1] +=this.giveawayPromotion()
-
-        return promotionList;
+  
+        return calculatePromotions(weekdayPromotionPrice,weekendPromotionPrice);
     }
 
+
+    calculatePromotions(weekdayPromotionPrice, weekendPromotionPrice) {
+        const promotionList = [
+            ["크리스마스 디데이 할인", this.christmasDdayPromtion()],
+            ["평일 할인", weekdayPromotionPrice],
+            ["주말 할인", weekendPromotionPrice],
+            ["특별 할인", this.specialPromotion()],
+            ["증정 이벤트", this.giveawayPromotion()],
+        ];
+        return promotionList;
+    }
     calculatePriceBeforePromotion (){
         let totalPriceBeforePromotion = 0;
         this.menusArray.forEach((menu) => {
-            console.log(menu)
             let [menuName, menuCount] = menu.split("-");
             totalPriceBeforePromotion += this.#calculateMenuPrice(menuName, menuCount);
         });

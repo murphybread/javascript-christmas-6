@@ -7,8 +7,7 @@ const OutputView = {
     printMenu(menusArray) {
         Console.print("\n<주문 메뉴>");
         menusArray.forEach((menu) => {
-            let menuName = menu.split("-")[0];
-            let menuCount = menu.split("-")[1];
+            let [menuName, menuCount] = menu.split("-");
             Console.print(`${menuName} ${menuCount}개`);
         });
     },
