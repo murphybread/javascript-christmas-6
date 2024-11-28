@@ -13,6 +13,16 @@ const OutputView = {
     printPriceBeforePromotion(totalPriceBeforePromotion) {
         Console.print("\n<할인 전 총주문 금액>");
         Console.print(totalPriceBeforePromotion + "원");
+    },
+
+    printGiveawayPromotion(giveawayPromotion) {
+        Console.print("\n<증정 메뉴>");
+        if(giveawayPromotion){
+            Console.print("샴페인 1개")
+        }
+        else{
+            Console.print("없음");
+        }
     }
 }
 

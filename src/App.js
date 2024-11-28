@@ -13,6 +13,9 @@ class App {
     const calculatePriceBeforePromotion = promotion.calculatePriceBeforePromotion();
     OutputView.printPriceBeforePromotion(calculatePriceBeforePromotion);
 
+    const giveawayPromotion = promotion.giveawayPromotion();
+    OutputView.printGiveawayPromotion(giveawayPromotion);
+
 
 
   }

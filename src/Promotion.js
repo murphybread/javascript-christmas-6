@@ -48,8 +48,6 @@ class Promotion{
 
     calculatePriceBeforePromotion (){
         let totalPriceBeforePromotion = 0;
-
-
         this.menusArray.forEach((menu) => {
             let menuName = menu.split("-")[0];
             let menuCount = menu.split("-")[1];
@@ -59,11 +57,21 @@ class Promotion{
                     totalPriceBeforePromotion += Menus[storeMenu][menuName] * menuCount ;
                 }
             }
-
-
         });
         return totalPriceBeforePromotion;
     }
+
+    giveawayPromotion (){
+        const totalPriceBeforePromotion = this.calculatePriceBeforePromotion();
+
+        if (totalPriceBeforePromotion >= 120000){
+            return ["샴페인-1"];
+        }
+        return "";
+        
+    }
+
+
 }
 
 export default Promotion;
