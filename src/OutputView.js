@@ -73,7 +73,17 @@ const OutputView = {
         else{
             Console.print("없음");
         }
+    },
+
+    printRecipt(promotion){
+        OutputView.printPriceBeforePromotion(promotion.calculatePriceBeforePromotion());    
+        OutputView.printGiveawayPromotion(promotion.giveawayPromotion());
+        OutputView.printPromptionList(promotion.calculatePromotions());
+        OutputView.printPromotionPrice(promotion.calculatePricePromotion());
+        OutputView.printAcutalPrice(promotion.calculatePriceBeforePromotion(), promotion.calculatePricePromotion(),promotion.giveawayPromotion());
+        OutputView.printEventBadge(promotion.calculatePricePromotion());
     }
+
 
 }
 

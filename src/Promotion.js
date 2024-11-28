@@ -27,8 +27,6 @@ class Promotion{
         this.day = Number(day);
 
     }
-
-
     weekdayPromotion (menuType){
         if ((this.day%7 !== 1 || this.day%7 !== 2 ) && menuType === "dessert"){
             return 2023;
@@ -95,17 +93,22 @@ class Promotion{
     calculatePriceBeforePromotion (){
         let totalPriceBeforePromotion = 0;
         this.menusArray.forEach((menu) => {
-            let menuName = menu.split("-")[0];
-            let menuCount = menu.split("-")[1];
-
-            for (let storeMenu in Menus){
-                if ( Object.keys(Menus[storeMenu]).includes(menuName)){
-                    totalPriceBeforePromotion += Menus[storeMenu][menuName] * menuCount ;
-                }
-            }
+            console.log(menu)
+            let [menuName, menuCount] = menu.split("-");
+            totalPriceBeforePromotion += this.#calculateMenuPrice(menuName, menuCount);
         });
         return totalPriceBeforePromotion;
     }
+
+    #calculateMenuPrice(menuName, menuCount){
+        for (let storeMenu in Menus){
+            if ( Object.keys(Menus[storeMenu]).includes(menuName)){
+                return Menus[storeMenu][menuName] * menuCount ;
+                }
+        }
+        return 0; 
+    }
+
 
     calculatePricePromotion(){
         let promtionPrice = 0
