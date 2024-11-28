@@ -27,6 +27,8 @@ class Promotion{
         this.day = Number(day);
 
     }
+
+
     weekdayPromotion (menuType){
         if ((this.day%7 !== 1 || this.day%7 !== 2 ) && menuType === "dessert"){
             return 2023;
@@ -63,6 +65,9 @@ class Promotion{
            [ "특별 할인", 0],
            ["증정 이벤트",0]
         ];
+        if (this.calculatePriceBeforePromotion() <= 10000){
+            return promotionList;
+        }
         let weekdayPromotionPrice = 0;
         let weekendPromotionPrice = 0;
 

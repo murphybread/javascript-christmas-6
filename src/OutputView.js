@@ -15,7 +15,7 @@ const OutputView = {
     
     printPriceBeforePromotion(totalPriceBeforePromotion) {
         Console.print("\n<할인 전 총주문 금액>");
-        Console.print(totalPriceBeforePromotion + "원");
+        Console.print(`${totalPriceBeforePromotion.toLocaleString("ko-KR")}원`);
     },
 
     printGiveawayPromotion(giveawayPromotion) {
@@ -33,7 +33,7 @@ const OutputView = {
         Console.print("\n<혜택 내역>");
         promotionList.forEach((promotion) => {
             if(promotion[1]){
-                Console.print(`${promotion[0]} -${promotion[1]}원`);
+                Console.print(`${promotion[0]} -${promotion[1].toLocaleString("ko-KR")}원`);
                 promotionFlag+=1;
             }
 
@@ -46,7 +46,7 @@ const OutputView = {
     printPromotionPrice(promotionPrice){
         Console.print("\n<총혜택 금액>");
         if (promotionPrice !== 0){
-            Console.print(`-${promotionPrice}원`);
+            Console.print(`-${promotionPrice.toLocaleString("ko-KR")}원`);
 
         }else {
             Console.print(`${promotionPrice}원`);
@@ -56,7 +56,7 @@ const OutputView = {
 
     printAcutalPrice(totalPriceBeforePromotion, promotionPrice,giveawayPromotion){
         Console.print("\n<할인 후 예상 결제 금액>");
-        Console.print(`${totalPriceBeforePromotion-promotionPrice+giveawayPromotion}원`);
+        Console.print(`${(totalPriceBeforePromotion-promotionPrice+giveawayPromotion).toLocaleString("ko-KR")}원`);
     },
 
     printEventBadge(promotionPrice){
