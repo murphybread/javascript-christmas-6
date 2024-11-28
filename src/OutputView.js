@@ -26,15 +26,20 @@ const OutputView = {
     },
 
     printPromptionList(promotionList){
+        let promotionFlag = 0;
         Console.print("\n<혜택 내역>");
         promotionList.forEach((promotion) => {
-            console.log(promotion)
             if(promotion[1]){
                 Console.print(`${promotion[0]} -${promotion[1]}원`);
+                promotionFlag+=1;
             }
 
         });
-    }
+        if(promotionFlag === 0){
+            Console.print("없음");
+        }
+    },
+
 }
 
 export default OutputView;

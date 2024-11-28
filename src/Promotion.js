@@ -48,6 +48,12 @@ class Promotion{
         return 0;
 
     }
+    christmasDdayPromtion (){
+        if (this.day <= 25){
+            return 1000 + (this.day-1) *100
+        }
+        return 0
+    }
 
     calculatePromotions(){
         const promotionList = [
@@ -70,10 +76,9 @@ class Promotion{
                     weekendPromotionPrice += this.weekendPromotion(storeMenu) * menuCount;
                 }
             }
-            console.log (`weekdayPromotionPrice: ${weekdayPromotionPrice}, weekendPromotionPrice: ${weekendPromotionPrice}`)
         });
 
-
+        promotionList[0][1] += this.christmasDdayPromtion();
         promotionList[1][1] += weekdayPromotionPrice;
         promotionList[2][1] += weekendPromotionPrice;
         promotionList[3][1] += this.specialPromotion()
