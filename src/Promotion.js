@@ -84,8 +84,6 @@ class Promotion{
         promotionList[3][1] += this.specialPromotion()
         promotionList[4][1] +=this.giveawayPromotion()
 
-        console.log(promotionList)
-
         return promotionList;
     }
 

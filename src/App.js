@@ -19,6 +19,8 @@ class App {
     OutputView.printPromotionPrice(promotion.calculatePricePromotion());
 
     OutputView.printAcutalPrice(promotion.calculatePriceBeforePromotion(), promotion.calculatePricePromotion(),promotion.giveawayPromotion());
+    
+    OutputView.printEventBadge(promotion.calculatePricePromotion());
 
   }
 }

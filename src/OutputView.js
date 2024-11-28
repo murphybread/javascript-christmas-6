@@ -41,14 +41,35 @@ const OutputView = {
     },
 
     printPromotionPrice(promotionPrice){
-        Console.print("\n<총혜택 내역>");
-        Console.print(`-${promotionPrice}원`);
+        Console.print("\n<총혜택 금액>");
+        if (promotionPrice !== 0){
+            Console.print(`-${promotionPrice}원`);
+
+        }else {
+            Console.print(`${promotionPrice}원`);
+        }
 
     },
 
     printAcutalPrice(totalPriceBeforePromotion, promotionPrice,giveawayPromotion){
         Console.print("\n<할인 후 예상 결제 금액>");
         Console.print(`${totalPriceBeforePromotion-promotionPrice+giveawayPromotion}원`);
+    },
+
+    printEventBadge(promotionPrice){
+        Console.print("\n<12월 이벤트 배지>");
+        if( promotionPrice >= 20000 ){
+            Console.print("산타");
+        }
+        else if (promotionPrice >= 10000){
+            Console.print("트리")
+        }
+        else if (promotionPrice >= 5000){
+            Console.print("별")
+        }
+        else{
+            Console.print("없음");
+        }
     }
 
 }
